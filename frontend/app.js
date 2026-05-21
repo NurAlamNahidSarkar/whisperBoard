@@ -3,7 +3,7 @@
    Shared logic for index.html, send.html, board.html
    ===================================================== */
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://whisperboard-uffy.onrender.com';
 
 const MEMBERS = [
   { name: 'Nahid',   emoji: '🌙', color: '#9b7ae0' },
