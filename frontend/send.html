@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Send Message — WhisperBoard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand" onclick="window.location='index.html'">
+      <span class="brand-eye">👁</span>
+      <span class="brand-name">WhisperBoard</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="send.html"  class="nav-link active">Send Message</a>
+      <a href="board.html" class="nav-link">Message Board</a>
+    </div>
+    <button class="nav-cta" onclick="window.location='send.html'">+ New Message</button>
+  </nav>
+
+  <main class="compose-page">
+    <div class="compose-bg-orb"></div>
+
+    <!-- STEP INDICATOR -->
+    <div class="steps-indicator">
+      <div class="step-dot active" id="dot1">
+        <span class="dot-num">1</span>
+        <span class="dot-label">Recipient</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-dot" id="dot2">
+        <span class="dot-num">2</span>
+        <span class="dot-label">Message</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-dot" id="dot3">
+        <span class="dot-num">3</span>
+        <span class="dot-label">Done</span>
+      </div>
+    </div>
+
+    <!-- STEP 1: CHOOSE RECIPIENT -->
+    <div class="compose-panel" id="step1">
+      <div class="panel-header">
+        <h2 class="panel-title">Who is this for?</h2>
+        <p class="panel-sub">Select the community member who will receive this message.</p>
+      </div>
+      <div class="recipient-grid" id="recipientGrid"></div>
+    </div>
+
+    <!-- STEP 2: WRITE MESSAGE -->
+    <div class="compose-panel hidden" id="step2">
+      <div class="panel-header">
+        <div class="to-pill" id="toPill">
+          <span id="toEmoji"></span>
+          <span>To: <strong id="toName"></strong></span>
+          <button class="change-btn" onclick="goToStep(1)">change</button>
+        </div>
+        <h2 class="panel-title">Write your message</h2>
+        <p class="panel-sub">Be honest. Be fair. Your identity stays completely private.</p>
+      </div>
+      <div class="textarea-wrap">
+        <textarea
+          id="msgInput"
+          class="msg-textarea"
+          placeholder="What do you want to say…"
+          maxlength="1000"
+          oninput="updateCharCount()"
+        ></textarea>
+        <div class="textarea-footer">
+          <div class="anon-badge">
+            <span>🔒</span>
+            <span>Your name is <strong>never stored</strong> — not in any log, not in the database.</span>
+          </div>
+          <span class="char-count" id="charCount">0 / 1000</span>
+        </div>
+      </div>
+      <div class="compose-actions">
+        <button class="btn-back" onclick="goToStep(1)">← Back</button>
+        <button class="btn-send" id="sendBtn" onclick="handleSend()">
+          <span id="sendLabel">Send Anonymously →</span>
+          <span id="sendSpinner" class="spinner hidden"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3: SUCCESS -->
+    <div class="compose-panel hidden" id="step3">
+      <div class="success-screen">
+        <div class="success-ring">
+          <div class="success-icon">✓</div>
+        </div>
+        <h2 class="success-title">Message sent.</h2>
+        <p class="success-sub">
+          Your message has been posted to the board. Your identity was never collected — there is no trace of who sent this.
+        </p>
+        <div class="success-proof">
+          <div class="proof-row"><span class="proof-check">✓</span> Recipient stored: <strong id="sentTo"></strong></div>
+          <div class="proof-row"><span class="proof-check">✓</span> Sender stored: <strong style="color:var(--red)">None</strong></div>
+          <div class="proof-row"><span class="proof-check">✓</span> IP address logged: <strong style="color:var(--red)">No</strong></div>
+        </div>
+        <div class="success-actions">
+          <a href="board.html" class="btn-primary">View Message Board</a>
+          <button class="btn-outline" onclick="resetCompose()">Send Another</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">👁 WhisperBoard</span>
+      <span class="footer-note">Anonymous Community Feedback · Sender data is permanently discarded</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    renderRecipients(document.getElementById('recipientGrid'));
+  </script>
+</body>
+</html>

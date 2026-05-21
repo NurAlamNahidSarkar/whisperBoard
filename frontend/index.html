@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhisperBoard — Anonymous Community Messages</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand" onclick="window.location='index.html'">
+      <span class="brand-eye">👁</span>
+      <span class="brand-name">WhisperBoard</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="send.html"  class="nav-link">Send Message</a>
+      <a href="board.html" class="nav-link">Message Board</a>
+    </div>
+    <button class="nav-cta" onclick="window.location='send.html'">+ New Message</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-noise"></div>
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="hero-orb orb3"></div>
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Anonymous · Honest · Safe
+      </div>
+      <h1 class="hero-title">
+        Say what you<br />
+        <em>actually</em> think.
+      </h1>
+      <p class="hero-desc">
+        Send anonymous messages to anyone in your community. Your identity is never collected, never stored, never traceable — not even by the developer.
+      </p>
+      <div class="hero-actions">
+        <a href="send.html"  class="btn-primary">Send Anonymous Message</a>
+        <a href="board.html" class="btn-outline">View Message Board</a>
+      </div>
+    </div>
+    <div class="hero-float-cards">
+      <div class="float-card fc1">
+        <span class="fc-icon">👻</span>
+        <div class="fc-text">
+          <span class="fc-label">Anonymous Specter</span>
+          <span class="fc-to">To: Jubair</span>
+        </div>
+      </div>
+      <div class="float-card fc2">
+        <span class="fc-icon">🔒</span>
+        <div class="fc-text">
+          <span class="fc-label">Sender: Unknown</span>
+          <span class="fc-to">0 traces left</span>
+        </div>
+      </div>
+      <div class="float-card fc3">
+        <span class="fc-icon">💬</span>
+        <div class="fc-text">
+          <span class="fc-label">Anonymous Echo</span>
+          <span class="fc-to">To: Nahid</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how-section">
+    <div class="container">
+      <div class="section-label">The Process</div>
+      <h2 class="section-title">How WhisperBoard works</h2>
+      <div class="steps-grid">
+        <div class="step-card" style="--i:0">
+          <div class="step-num">01</div>
+          <div class="step-icon">🎯</div>
+          <h3 class="step-title">Choose a recipient</h3>
+          <p class="step-desc">Select who the message is for. Only their name is ever recorded — yours is never asked.</p>
+        </div>
+        <div class="step-card" style="--i:1">
+          <div class="step-num">02</div>
+          <div class="step-icon">✍️</div>
+          <h3 class="step-title">Write freely</h3>
+          <p class="step-desc">Type your message without filters. Honest feedback, kind words, or constructive observations.</p>
+        </div>
+        <div class="step-card" style="--i:2">
+          <div class="step-num">03</div>
+          <div class="step-icon">🔒</div>
+          <h3 class="step-title">Zero-trace send</h3>
+          <p class="step-desc">The server receives only recipient + message. No user ID, no IP stored. No sender column exists.</p>
+        </div>
+        <div class="step-card" style="--i:3">
+          <div class="step-num">04</div>
+          <div class="step-icon">📋</div>
+          <h3 class="step-title">Community sees it</h3>
+          <p class="step-desc">All messages appear on the board. Everyone can read — no one can trace the author.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY MEMBERS -->
+  <section class="section members-section">
+    <div class="container">
+      <div class="section-label">The Community</div>
+      <h2 class="section-title">Who's in your group?</h2>
+      <p class="section-sub">Click any member to send them an anonymous message right now.</p>
+      <div class="members-grid" id="membersGrid"></div>
+    </div>
+  </section>
+
+  <!-- PRIVACY GUARANTEE -->
+  <section class="section privacy-section">
+    <div class="container">
+      <div class="privacy-box">
+        <div class="privacy-icon">🛡️</div>
+        <div class="privacy-content">
+          <h3 class="privacy-title">The Anonymity Guarantee</h3>
+          <p class="privacy-text">
+            When you send a message, the frontend sends <code>{ to, message }</code> — nothing else.
+            The backend stores only <code>recipient</code>, <code>message</code>, <code>hash</code> (random number), and <code>created_at</code>.
+            There is no <code>sender</code> column in the database. Even with full database access, no one — including the developer — can determine who sent what.
+          </p>
+          <div class="privacy-proof">
+            <span class="proof-item">✓ No login required</span>
+            <span class="proof-item">✓ No cookies tracked</span>
+            <span class="proof-item">✓ No IP logged</span>
+            <span class="proof-item">✓ No sender column in DB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDELINES -->
+  <section class="section">
+    <div class="container">
+      <div class="guidelines-box">
+        <span class="guide-icon">⚠️</span>
+        <div>
+          <strong class="guide-title">Community Guidelines</strong>
+          <p class="guide-text">
+            WhisperBoard is for honest, constructive communication. Messages promoting harassment, personal threats, or targeted abuse violate community standards. Anonymity is a privilege — use it responsibly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">👁 WhisperBoard</span>
+      <span class="footer-note">Anonymous Community Feedback · Sender data is permanently discarded</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    renderMembers(document.getElementById('membersGrid'), true);
+  </script>
+</body>
+</html>

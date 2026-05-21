@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Message Board — WhisperBoard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand" onclick="window.location='index.html'">
+      <span class="brand-eye">👁</span>
+      <span class="brand-name">WhisperBoard</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="send.html"  class="nav-link">Send Message</a>
+      <a href="board.html" class="nav-link active">Message Board</a>
+    </div>
+    <button class="nav-cta" onclick="window.location='send.html'">+ New Message</button>
+  </nav>
+
+  <main class="board-page">
+    <div class="board-header">
+      <div class="section-label">Public Board</div>
+      <h1 class="board-title">All Messages</h1>
+      <p class="board-sub">Every message sent by the community. Senders are permanently anonymous — no one knows who wrote what.</p>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+      <span class="filter-label">Filter:</span>
+      <div class="filter-pills" id="filterPills"></div>
+    </div>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-num" id="totalCount">—</span>
+        <span class="stat-label">Total Messages</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <span class="stat-num" id="filterCount">—</span>
+        <span class="stat-label">Showing</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <span class="stat-num">0</span>
+        <span class="stat-label">Senders Known</span>
+      </div>
+    </div>
+
+    <!-- LOADING -->
+    <div id="loadingState" class="loading-state">
+      <div class="loader"></div>
+      <p>Loading messages…</p>
+    </div>
+
+    <!-- MESSAGE LIST -->
+    <div id="messageList" class="message-list hidden"></div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="empty-state hidden">
+      <div class="empty-icon">💭</div>
+      <p class="empty-title">No messages yet</p>
+      <p class="empty-sub">Be the first to send one.</p>
+      <a href="send.html" class="btn-primary">Send a Message</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">👁 WhisperBoard</span>
+      <span class="footer-note">Anonymous Community Feedback · Sender data is permanently discarded</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    initBoard();
+  </script>
+</body>
+</html>
